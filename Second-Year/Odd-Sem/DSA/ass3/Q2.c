@@ -27,7 +27,16 @@ struct Node* preOrder(int *arr){
     return root;
 }
 
-
+struct Node* inorder(int *arr, int i, int j){
+    if(i > j){
+        return NULL;
+    }
+    int mid = (i + j)/2;
+    Node *newNode = createNode(arr[mid]);
+    newNode->left = inorder(arr, i, mid - 1);
+    newNode->right = inorder(arr, mid + 1, j);
+    return newNode;
+}
 int main(){
     int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
     struct Node* root = preOrder(arr);

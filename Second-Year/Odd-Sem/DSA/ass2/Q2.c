@@ -12,6 +12,13 @@ struct Node* createNode(int data){
     return node;
 }
 
+struct Node * insertBegin(struct Node* head, int val){
+    struct Node* temp = createNode(val);
+    temp->next = head;
+    head = temp;
+    return head;
+}
+
 struct Node* createCircularLL(int n){
     struct Node* head = NULL, *temp = NULL, *newNode;
     int i;
@@ -51,12 +58,23 @@ int josephus(int n, int k){
     return survivor;
 }
 int main(){
-    int n, k;
-    printf("Enter the value of n : ");
-    scanf("%d",&n);
-    printf("Enter the value of k : ");
-    scanf("%d",&k);
-    int ans = josephus(n, k);
-    printf("The winner is %d",ans);
+    // int n, k;
+    // printf("Enter the value of n : ");
+    // scanf("%d",&n);
+    // printf("Enter the value of k : ");
+    // scanf("%d",&k);
+    // int ans = josephus(n, k);
+    // printf("The winner is %d",ans);
+
+    struct Node * head = createNode(3);
+    head = insertBegin(head, 5);
+    head = insertBegin(head, 2);
+    head = insertBegin(head, 1);
+    struct Node * temp = head;
+    while(temp != NULL){
+        printf("%d ",temp->val);
+        temp = temp->next;
+    }
+
     return 0;
 }

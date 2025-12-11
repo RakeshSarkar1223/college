@@ -111,6 +111,47 @@ void inorder(struct Node * root){
     inorder(root->right);
 }
 
+
+//this is for delete Node
+Node* findInorderSuccessor(Node *root){
+    while(root->left != NULL){
+        root = root->left;
+    }
+    return root;
+}
+
+//The last question of this 
+Node* delete(Node *root, int val){
+    if(root->data > val){
+        root->left = delete(root->left, val);
+    }
+    else if(root->data < val){
+        root->right = delete(root->right, val);
+    }
+    else {
+        //fisrt case
+        if(root->left == NULL && root->right == NULL){
+            return NULL;
+        }
+
+        //skewed 
+        if(root->left == NULL){
+            return root->right;
+        }
+        if(root->right == NULL){
+            return root->left;
+        }
+
+        //normal node
+        else {
+            Node* successor = findInorderSuccessor(root->right);
+            root->data = successor->data;
+            delete(root, successor->data);
+        }
+        
+    }
+}
+
 int main(){
     int arr[] = {5, 3, 2, 4, 8, 10};
     struct Node * root = NULL;
