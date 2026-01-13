@@ -15,6 +15,6 @@ class Room{
 class RoomDemo{
     public static void main(String[] args) {
         Room r = new Room(2, 3, 4);
-        System.out.println("The volume of the room is: " + r.volume());
+        System.out.println(r.volume());
     }
 }
