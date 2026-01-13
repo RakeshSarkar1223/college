@@ -1,6 +1,7 @@
-#include<stdio.h>
+#include <stdio.h>
 
-int countArr(int **arr, int n){
+int countArr(int **arr, int n)
+{
     int count = 0;
     // for(int i = 0; i< n; i++){
     //     int j = i + 1;
@@ -11,17 +12,19 @@ int countArr(int **arr, int n){
     //     }
     // }
 
-    int i = 0; 
+    int i = 0;
     int j = n - 1;
-    while(i < n && j >= 0){
-        if(arr[i][j] == 1){
+    while (i < n && j >= 0)
+    {
+        if (arr[i][j] == 1)
+        {
             count++;
             j--;
         }
-        else {
+        else
+        {
             i++;
         }
     }
     return count;
 }
-
